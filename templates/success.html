@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Success Page</title>
+</head>
+<body>
+	
+<table>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		
+			{% for message in messages %}
+				<p id = "green">{{message}}</p>
+			{% endfor %}
+		
+	{% endif %}
+{% endwith %}
+
+  <tr>
+    <th>Email info here!</th>
+  </tr>
+{% for email in email: %}
+<tr>
+   <td>{{email.email}}</td>
+   <td>{{email.created_at}}</td>
+   <td><form action="/remove/{{email.id}}" method="post"><input type="submit" value="Delete"></form></td>
+   
+ </tr>
+
+{% endfor %}
+</table>
+			<!-- <form action="/remove/{{email.id}}" method="post">
+						<input type="submit" value="Delete">
+			</form>
+ -->
+</body>
+</html>
